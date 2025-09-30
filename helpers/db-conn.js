@@ -1,5 +1,7 @@
 const { MongoClient } = require("mongodb");
-const mongodbUri = "mongodb://localhost:27017/";
+// const mongodbUri = "mongodb://localhost:27017/";
+const mongodbUri =
+  "mongodb://admin:xg7wz%402slm9!@68.178.168.213:27017/?authSource=admin";
 const client = new MongoClient(mongodbUri);
 let db;
 
