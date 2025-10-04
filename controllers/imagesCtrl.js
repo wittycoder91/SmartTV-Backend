@@ -53,7 +53,9 @@ const getImages = async () => {
       menu: images.menu || [],
       lunch: images.lunch || [],
       coffee: images.coffee || [],
-      wine: images.wine || []
+      wine: images.wine || [],
+      reservation: images.reservation || [],
+      reviews: images.reviews || []
     };
     
     return {
@@ -94,6 +96,8 @@ const uploadImages = async (files, category) => {
       updateData.lunch = category === 'lunch' ? updatedImages : [];
       updateData.coffee = category === 'coffee' ? updatedImages : [];
       updateData.wine = category === 'wine' ? updatedImages : [];
+      updateData.reservation = category === 'reservation' ? updatedImages : [];
+      updateData.reviews = category === 'reviews' ? updatedImages : [];
     }
     
     await collection.updateOne(
@@ -124,11 +128,11 @@ const updateImages = async (category, imageUrls) => {
   try {
     const collection = getImagesCollection();
     
-    const validCategories = ['menu', 'lunch', 'coffee', 'wine'];
+    const validCategories = ['menu', 'lunch', 'coffee', 'wine', 'reservation', 'reviews'];
     if (!validCategories.includes(category)) {
       return {
         success: false,
-        message: "Invalid category. Must be one of: menu, lunch, coffee, wine"
+        message: "Invalid category. Must be one of: menu, lunch, coffee, wine, reservation, reviews"
       };
     }
     
@@ -143,6 +147,8 @@ const updateImages = async (category, imageUrls) => {
       updateData.lunch = category === 'lunch' ? imageUrls : [];
       updateData.coffee = category === 'coffee' ? imageUrls : [];
       updateData.wine = category === 'wine' ? imageUrls : [];
+      updateData.reservation = category === 'reservation' ? imageUrls : [];
+      updateData.reviews = category === 'reviews' ? imageUrls : [];
     }
     
     await collection.updateOne(
